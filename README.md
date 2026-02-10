@@ -12,10 +12,10 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Run the scraper:
+2. Run the scraper on a public documentation site:
 
 ```bash
-python scraper.py "https://docs.trimblecloud.com/identity-and-access-management/" --output combined_iam.md
+python scraper.py "https://example-docs.com/api/" --output combined_docs.md
 ```
 
 ## For authenticated sites:
@@ -24,13 +24,13 @@ If the documentation requires login, follow this two-step process:
 
 **Step 1: Extract cookies**
 ```bash
-python get_cookies.py "https://docs.trimblecloud.com/identity-and-access-management/" --output cookies.json
+python get_cookies.py "https://private-docs.example.com/docs/" --output cookies.json
 ```
 This opens a browser. Log in, then close the browser window or press Enter in the terminal.
 
 **Step 2: Scrape with authenticated session**
 ```bash
-python scraper.py "https://docs.trimblecloud.com/identity-and-access-management/" --output combined_iam.md --playwright --cookies cookies.json
+python scraper.py "https://private-docs.example.com/docs/" --output combined_docs.md --playwright --cookies cookies.json
 ```
 
 ## Options
