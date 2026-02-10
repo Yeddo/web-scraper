@@ -18,6 +18,21 @@ pip install -r requirements.txt
 python scraper.py "https://docs.trimblecloud.com/identity-and-access-management/" --output combined_iam.md
 ```
 
+## For authenticated sites:
+
+If the documentation requires login, follow this two-step process:
+
+**Step 1: Extract cookies**
+```bash
+python get_cookies.py "https://docs.trimblecloud.com/identity-and-access-management/" --output cookies.json
+```
+This opens a browser. Log in, then close the browser window or press Enter in the terminal.
+
+**Step 2: Scrape with authenticated session**
+```bash
+python scraper.py "https://docs.trimblecloud.com/identity-and-access-management/" --output combined_iam.md --playwright --cookies cookies.json
+```
+
 ## Options
 
 - `--output` / `-o`: Output file path (default: `combined.md`)
